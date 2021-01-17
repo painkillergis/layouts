@@ -17,19 +17,19 @@ import kotlin.test.assertEquals
   ExtendWith(StartApplication::class),
   ExtendWith(TestHttpClientProvider::class),
 )
-class InsetBSpec {
+internal class InsetBSpec {
 
   @TestHttpClient
   lateinit var httpClient: HttpClient
 
-  data class Inset(
+  internal data class Inset(
     val insetWidth: Int,
     val insetHeight: Int,
     val width: Int,
     val height: Int,
   )
 
-  data class Layout(
+  internal data class Layout(
     val width: Int,
     val height: Int,
     val marginLeft: Int,
