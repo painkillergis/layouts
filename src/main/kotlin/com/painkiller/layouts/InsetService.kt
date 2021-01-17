@@ -5,7 +5,7 @@ class InsetService {
     return Layout(
       inset.width,
       inset.height,
-      inset.insetWidth,
+      (inset.width - inset.insetWidth) / 2,
       (inset.height - inset.insetHeight) / 2,
     )
   }
