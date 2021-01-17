@@ -32,6 +32,8 @@ internal class InsetBSpec {
   internal data class Layout(
     val width: Int,
     val height: Int,
+    val innerWidth: Int,
+    val innerHeight: Int,
     val marginLeft: Int,
     val marginTop: Int,
   )
@@ -60,7 +62,7 @@ internal class InsetBSpec {
     }
 
     assertEquals(
-      Layout(0, 0, 0, 0),
+      Layout(0, 0, 0, 0, 0, 0),
       layout,
     )
   }
@@ -85,6 +87,8 @@ internal class InsetBSpec {
       Layout(
         900,
         900,
+        300,
+        300,
         300,
         300,
       ),

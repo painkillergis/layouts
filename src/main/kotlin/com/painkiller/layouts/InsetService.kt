@@ -9,6 +9,8 @@ class InsetService {
     return Layout(
       inset.width,
       inset.height,
+      inset.width - marginLeft * 2,
+      inset.height - marginTop * 2,
       marginLeft,
       marginTop,
     )

@@ -13,7 +13,7 @@ internal class InsetServiceSpec {
     )
 
     assertEquals(
-      Layout(900, 900, 300, 300),
+      Layout(900, 900, 300, 300, 300, 300),
       layout,
     )
   }
@@ -25,7 +25,7 @@ internal class InsetServiceSpec {
     )
 
     assertEquals(
-      Layout(900, 900, 300, 350),
+      Layout(900, 900, 300, 200, 300, 350),
       layout,
     )
   }
@@ -37,7 +37,7 @@ internal class InsetServiceSpec {
     )
 
     assertEquals(
-      Layout(900, 900, 350, 300),
+      Layout(900, 900, 200, 300, 350, 300),
       layout,
     )
   }
@@ -49,7 +49,7 @@ internal class InsetServiceSpec {
     )
 
     assertEquals(
-      Layout(0, 0, 0, 0),
+      Layout(0, 0, 0, 0, 0, 0),
       portraitLayout,
     )
 
@@ -58,7 +58,7 @@ internal class InsetServiceSpec {
     )
 
     assertEquals(
-      Layout(0, 0, 0, 0),
+      Layout(0, 0, 0, 0, 0, 0),
       landscapeLayout,
     )
   }
