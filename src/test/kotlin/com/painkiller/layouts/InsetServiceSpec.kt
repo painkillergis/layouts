@@ -9,7 +9,7 @@ internal class InsetServiceSpec {
   @Test
   fun `square thirds`() {
     val layout = insetService.getLayout(
-      Inset(300, 300, 900, 900),
+      Inset(900, 900, 300, 300),
     )
 
     assertEquals(
