@@ -10,7 +10,12 @@ fun main(args: Array<String>) = main(args)
 
 fun Application.applicationModule() {
   routing {
-    VersionController().apply { routes() }
+    InsetController(
+      InsetService()
+    )
+      .apply { routes() }
+    VersionController()
+      .apply { routes() }
   }
   install(ContentNegotiation) {
     jackson()
