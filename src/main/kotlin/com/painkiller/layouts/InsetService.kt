@@ -5,8 +5,22 @@ class InsetService {
     return Layout(
       inset.width,
       inset.height,
-      (inset.width - inset.sourceWidth) / 2,
-      (inset.height - inset.sourceHeight) / 2,
+      (inset.width - normalizeWidth(inset)) / 2,
+      (inset.height - normalizeHeight(inset)) / 2,
     )
+  }
+
+  private fun normalizeWidth(inset: Inset): Int {
+    val innerWidth = inset.width - inset.margin * 2
+    return if (inset.sourceWidth < inset.sourceHeight)
+      (inset.sourceWidth.toDouble() / inset.sourceHeight * innerWidth).toInt()
+    else innerWidth
+  }
+
+  private fun normalizeHeight(inset: Inset): Int  {
+    val innerHeight = inset.height - inset.margin * 2
+    return if (inset.sourceHeight < inset.sourceWidth)
+      (inset.sourceHeight.toDouble() / inset.sourceWidth * innerHeight).toInt()
+    else innerHeight
   }
 }
