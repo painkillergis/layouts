@@ -3,7 +3,7 @@ package com.painkiller.layouts
 data class Inset(
   val width: Int,
   val height: Int,
-  val sourceWidth: Int,
-  val sourceHeight: Int,
+  val sourceWidth: Double,
+  val sourceHeight: Double,
   val margin: Int,
 )
