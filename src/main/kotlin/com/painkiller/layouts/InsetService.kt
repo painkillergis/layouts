@@ -2,20 +2,16 @@ package com.painkiller.layouts
 
 class InsetService {
   fun getLayout(inset: Inset): Layout {
-    return if (inset.sourceWidth < inset.sourceHeight)
-      Layout(
-        inset.width,
-        inset.height,
-        marginLeft(inset),
-        inset.margin,
-      )
+    val (marginLeft, marginTop) = if (inset.sourceWidth < inset.sourceHeight)
+      listOf(marginLeft(inset), inset.margin)
     else
-      Layout(
-        inset.width,
-        inset.height,
-        inset.margin,
-        marginTop(inset),
-      )
+      listOf(inset.margin, marginTop(inset))
+    return Layout(
+      inset.width,
+      inset.height,
+      marginLeft,
+      marginTop,
+    )
   }
 
   private fun marginLeft(inset: Inset): Int {
