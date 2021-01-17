@@ -5,8 +5,6 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.hamcrest.Matchers.matchesPattern
-import org.hamcrest.junit.MatcherAssert.assertThat
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.extension.Extensions
 import kotlin.test.Test
@@ -23,10 +21,10 @@ internal class InsetBSpec {
   lateinit var httpClient: HttpClient
 
   internal data class Inset(
-    val insetWidth: Int,
-    val insetHeight: Int,
     val width: Int,
     val height: Int,
+    val insetWidth: Int,
+    val insetHeight: Int,
   )
 
   internal data class Layout(
@@ -43,10 +41,10 @@ internal class InsetBSpec {
         url("/inset")
         contentType(ContentType.Application.Json)
         body = Inset(
-          300,
-          300,
           900,
           900,
+          300,
+          300,
         )
       }
     }
