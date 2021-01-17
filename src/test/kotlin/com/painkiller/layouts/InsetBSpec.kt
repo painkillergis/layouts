@@ -50,6 +50,22 @@ internal class InsetBSpec {
   }
 
   @Test
+  fun `post _inset with empty inset`() {
+    val layout = runBlocking {
+      httpClient.post<Layout> {
+        url("/inset")
+        contentType(ContentType.Application.Json)
+        body = Inset(0, 0, 0, 0, 0)
+      }
+    }
+
+    assertEquals(
+      Layout(0, 0, 0, 0),
+      layout,
+    )
+  }
+
+  @Test
   fun `post _inset`() {
     val layout = runBlocking {
       httpClient.post<Layout> {

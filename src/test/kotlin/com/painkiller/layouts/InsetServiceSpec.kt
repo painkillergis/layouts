@@ -41,4 +41,25 @@ internal class InsetServiceSpec {
       layout,
     )
   }
+
+  @Test
+  fun `dont divide by zero`() {
+    val portraitLayout = insetService.getLayout(
+      Inset(0, 0, 0, -1 , 0),
+    )
+
+    assertEquals(
+      Layout(0, 0, 0, 0),
+      portraitLayout,
+    )
+
+    val landscapeLayout = insetService.getLayout(
+      Inset(0, 0, -1, 0 , 0),
+    )
+
+    assertEquals(
+      Layout(0, 0, 0, 0),
+      landscapeLayout,
+    )
+  }
 }
