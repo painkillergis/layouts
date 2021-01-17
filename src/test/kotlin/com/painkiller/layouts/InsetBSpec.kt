@@ -2,6 +2,7 @@ package com.painkiller.layouts
 
 import io.ktor.client.*
 import io.ktor.client.request.*
+import io.ktor.http.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.matchesPattern
@@ -40,6 +41,7 @@ class InsetBSpec {
     val layout = runBlocking {
       httpClient.post<Layout> {
         url("/inset")
+        contentType(ContentType.Application.Json)
         body = Inset(
           300,
           300,
