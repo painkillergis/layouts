@@ -1,8 +1,5 @@
-# ktor-starter
+# layouts
 This starter gifts you a runnable barebones Kotlin Ktor application with tests.
-## Eject
-`./eject`
-Ejecting renames packages, artifacts, services, deployments, and the project name from ktor-starter to the name of this directory.
 ## Run the tests
 ### From command line
 `./gradlew test`

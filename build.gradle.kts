@@ -7,7 +7,7 @@ plugins {
 }
 
 application {
-  mainClassName = "com.painkiller.ktor_starter.ApplicationKt"
+  mainClassName = "com.painkiller.layouts.ApplicationKt"
 }
 
 group = "com.painkiller"

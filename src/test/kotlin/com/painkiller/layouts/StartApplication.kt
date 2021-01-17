@@ -1,4 +1,4 @@
-package com.painkiller.ktor_starter
+package com.painkiller.layouts
 
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*

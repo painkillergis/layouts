@@ -1,41 +1,41 @@
 #!/bin/sh
 ./gradlew shadowJar
-docker build -t painkillergis/ktor-starter:`scripts/versionByDepth` .
-docker push painkillergis/ktor-starter:`scripts/versionByDepth`
+docker build -t painkillergis/layouts:`scripts/versionByDepth` .
+docker push painkillergis/layouts:`scripts/versionByDepth`
 cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ktor-starter
+  name: layouts
   labels:
-    app: ktor-starter
+    app: layouts
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ktor-starter
+      app: layouts
   template:
     metadata:
       labels:
-        app: ktor-starter
+        app: layouts
     spec:
       containers:
-      - name: ktor-starter
-        image: painkillergis/ktor-starter:`scripts/versionByDepth`
+      - name: layouts
+        image: painkillergis/layouts:`scripts/versionByDepth`
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ktor-starter
+  name: layouts
 spec:
   type: NodePort
   ports:
   - port: 8080
     targetPort: 8080
   selector:
-    app: ktor-starter
+    app: layouts
 EOF
 echo waiting for deployment `scripts/versionByDepth` \(currently `scripts/deployedVersion`\)
 until [ `scripts/versionByDepth` == `scripts/deployedVersion` ] ; do
