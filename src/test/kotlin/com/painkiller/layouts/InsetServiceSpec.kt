@@ -17,4 +17,16 @@ internal class InsetServiceSpec {
       layout,
     )
   }
+
+  @Test
+  fun `top margin is greater than left margin`() {
+    val layout = insetService.getLayout(
+      Inset(900, 900, 300, 200),
+    )
+
+    assertEquals(
+      Layout(900, 900, 300, 350),
+      layout,
+    )
+  }
 }

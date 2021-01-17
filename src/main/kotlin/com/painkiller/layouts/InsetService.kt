@@ -6,7 +6,7 @@ class InsetService {
       inset.width,
       inset.height,
       inset.insetWidth,
-      inset.insetHeight,
+      (inset.height - inset.insetHeight) / 2,
     )
   }
 }
