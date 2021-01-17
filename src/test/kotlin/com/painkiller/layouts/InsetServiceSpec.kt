@@ -7,13 +7,13 @@ internal class InsetServiceSpec {
   private val insetService = InsetService()
 
   @Test
-  fun `dummy layout`() {
+  fun `square thirds`() {
     val layout = insetService.getLayout(
-      Inset(0, 0, 0, 0),
+      Inset(300, 300, 900, 900),
     )
 
     assertEquals(
-      Layout(0, 0, 0, 0),
+      Layout(900, 900, 300, 300),
       layout,
     )
   }
