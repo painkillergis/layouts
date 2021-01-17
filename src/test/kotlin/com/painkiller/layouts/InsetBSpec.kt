@@ -23,8 +23,9 @@ internal class InsetBSpec {
   internal data class Inset(
     val width: Int,
     val height: Int,
-    val insetWidth: Int,
-    val insetHeight: Int,
+    val sourceWidth: Int,
+    val sourceHeight: Int,
+    val margin: Int,
   )
 
   internal data class Layout(
@@ -43,7 +44,8 @@ internal class InsetBSpec {
         body = Inset(
           900,
           900,
-          300,
+          1000,
+          1000,
           300,
         )
       }
