@@ -2,6 +2,7 @@ package com.painkiller.layouts
 
 import io.ktor.client.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -34,6 +35,19 @@ internal class InsetBSpec {
     val marginLeft: Int,
     val marginTop: Int,
   )
+
+  @Test
+  fun `post _inset with empty body`() {
+    val response = runBlocking {
+      httpClient.post<HttpResponse> {
+        url("/inset")
+        contentType(ContentType.Application.Json)
+        body = ""
+      }
+    }
+
+    assertEquals(HttpStatusCode.BadRequest, response.status)
+  }
 
   @Test
   fun `post _inset`() {
