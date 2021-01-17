@@ -2,12 +2,11 @@ package com.painkiller.layouts
 
 class InsetService {
   fun getLayout(inset: Inset): Layout {
-    val ratio = inset.sourceWidth.toDouble() / inset.sourceHeight
     return if (inset.sourceWidth < inset.sourceHeight)
       Layout(
         inset.width,
         inset.height,
-        marginLeft(inset.width, inset.margin, ratio),
+        marginLeft(inset),
         inset.margin,
       )
     else
@@ -15,15 +14,17 @@ class InsetService {
         inset.width,
         inset.height,
         inset.margin,
-        marginTop(inset.height, inset.margin, ratio),
+        marginTop(inset),
       )
   }
 
-  private fun marginLeft(width: Int, margin: Int, ratio: Double): Int {
-    return (width - ((width - margin * 2) * ratio).toInt()) / 2
+  private fun marginLeft(inset: Inset): Int {
+    val innerWidth = inset.width - inset.margin * 2
+    return (inset.width - innerWidth * inset.sourceWidth / inset.sourceHeight) / 2
   }
 
-  private fun marginTop(height: Int, margin: Int, ratio: Double): Int {
-    return (height - ((height - margin * 2) / ratio).toInt()) / 2
+  private fun marginTop(inset: Inset): Int {
+    val innerHeight = inset.height - inset.margin * 2
+    return (inset.height - innerHeight * inset.sourceHeight / inset.sourceWidth) / 2
   }
 }
