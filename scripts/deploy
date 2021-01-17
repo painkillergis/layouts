@@ -1,5 +1,5 @@
 #!/bin/sh
-./gradlew shadowJar
+./gradlew clean shadowJar
 docker build -t painkillergis/layouts:`scripts/versionByDepth` .
 docker push painkillergis/layouts:`scripts/versionByDepth`
 cat <<EOF | kubectl apply -f -
