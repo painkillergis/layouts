@@ -7,7 +7,7 @@ class InsetService {
       Layout(
         inset.width,
         inset.height,
-        (inset.width - ((inset.width - inset.margin * 2) * ratio).toInt()) / 2,
+        marginLeft(inset.width, inset.margin, ratio),
         inset.margin,
       )
     else
@@ -15,8 +15,15 @@ class InsetService {
         inset.width,
         inset.height,
         inset.margin,
-        (inset.height - ((inset.height - inset.margin * 2) / ratio).toInt()) / 2,
+        marginTop(inset.height, inset.margin, ratio),
       )
   }
 
+  private fun marginLeft(width: Int, margin: Int, ratio: Double): Int {
+    return (width - ((width - margin * 2) * ratio).toInt()) / 2
+  }
+
+  private fun marginTop(height: Int, margin: Int, ratio: Double): Int {
+    return (height - ((height - margin * 2) / ratio).toInt()) / 2
+  }
 }
