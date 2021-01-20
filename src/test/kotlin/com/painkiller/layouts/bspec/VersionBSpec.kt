@@ -1,4 +1,4 @@
-package com.painkiller.layouts
+package com.painkiller.layouts.bspec
 
 import io.ktor.client.*
 import io.ktor.client.request.*

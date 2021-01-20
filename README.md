@@ -1,10 +1,9 @@
 # layouts
 The layouts ReST service calculate print layouts for use in heightmap and shaded relief generation.
 ## Run the tests
-### From command line
-`./gradlew test`
-### From IntelliJ
-Right click src/test directory and click Run
+`./gradlew cleanTest test`
+### Against a deployment
+`baseUrl=http://painkiller.arctair.com/layouts ./gradlew cleanTest test`
 ## Deploy
 Deployment scripts to Kubernetes are included in the scripts/ directory.
 `scripts/deploy`

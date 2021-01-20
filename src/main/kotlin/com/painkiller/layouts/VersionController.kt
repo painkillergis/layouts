@@ -3,29 +3,11 @@ package com.painkiller.layouts
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import java.util.*
 
-
-class VersionController {
-  data class Version(
-    val sha: String,
-    val version: String,
-  )
-
-  private val version: Version
-
-  init {
-    val properties = Properties()
-    properties.load(javaClass.getResourceAsStream("/version.properties"))
-    version = Version(
-      properties.getProperty("sha"),
-      properties.getProperty("version"),
-    )
-  }
-
-  fun Routing.routes() {
+fun Application.versionController(versionService: VersionService) {
+  routing {
     get("/version") {
-      call.respond(version)
+      call.respond(versionService.getVersion())
     }
   }
 }
