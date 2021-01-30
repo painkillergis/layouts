@@ -1,4 +1,4 @@
-package com.painkiller.ktor_starter
+package com.painkiller.ktor_starter.version
 
 import java.util.*
 
@@ -15,7 +15,5 @@ class VersionService {
     )
   }
 
-  fun getVersion(): Version {
-    return version
-  }
+  fun getVersion() = version
 }

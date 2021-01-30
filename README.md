@@ -6,7 +6,7 @@ Ejecting renames packages, artifacts, services, deployments, and the project nam
 ## Run the tests
 `./gradlew cleanTest test`
 ### Against a deployment
-`baseUrl=http://painkiller.arctair.com/ktor-starter ./gradlew cleanTest test`
+`ktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter ./gradlew cleanTest test`
 ## Build, deploy, verify
 `scripts/ci`
 The ci script executes these steps:

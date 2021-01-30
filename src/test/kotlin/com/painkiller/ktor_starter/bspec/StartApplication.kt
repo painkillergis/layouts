@@ -6,11 +6,11 @@ import io.ktor.server.netty.*
 import org.junit.jupiter.api.extension.BeforeAllCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
-object StartApplication : BeforeAllCallback, ExtensionContext.Store.CloseableResource {
+internal object StartApplication : BeforeAllCallback, ExtensionContext.Store.CloseableResource {
   var server: NettyApplicationEngine? = null
 
   override fun beforeAll(context: ExtensionContext?) {
-    if (System.getenv("baseUrl") != null || server != null) return
+    if (System.getenv("ktor_starter_baseUrl") != null || server != null) return
     server = embeddedServer(
       Netty,
       applicationEngineEnvironment {

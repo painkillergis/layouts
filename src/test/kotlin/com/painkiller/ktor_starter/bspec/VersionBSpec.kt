@@ -15,15 +15,10 @@ import kotlin.test.Test
   ExtendWith(StartApplication::class),
   ExtendWith(TestHttpClientProvider::class),
 )
-class VersionBSpec {
+internal class VersionBSpec {
 
   @TestHttpClient
   lateinit var httpClient: HttpClient
-
-  data class Version(
-    val sha: String,
-    val version: String,
-  )
 
   @Test
   fun `get _version`() {

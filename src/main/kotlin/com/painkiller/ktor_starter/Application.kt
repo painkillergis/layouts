@@ -1,5 +1,7 @@
 package com.painkiller.ktor_starter
 
+import com.painkiller.ktor_starter.version.VersionService
+import com.painkiller.ktor_starter.version.versionController
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.jackson.*
