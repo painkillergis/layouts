@@ -38,7 +38,9 @@ internal class PrintLayoutControllerKtSpec {
       .apply {
         assertEquals(HttpStatusCode.OK, response.status())
         assertEquals(
-          Rectangle(2332, 3223),
+          PrintLayout(
+            Rectangle(2332, 3223),
+          ),
           Json.decodeFromString(response.content!!),
         )
       }

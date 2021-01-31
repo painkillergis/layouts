@@ -20,13 +20,14 @@ internal class PrintLayoutBSpec {
   @TestHttpClient
   lateinit var httpClient: HttpClient
 
-  internal data class PrintLayoutQuestion(val printOption : Rectangle)
+  internal data class PrintLayoutQuestion(val printOption: Rectangle)
+  internal data class PrintLayout(val size: Rectangle)
   internal data class Rectangle(val width: Int, val height: Int)
 
   @Test
   fun `echo print option as print layout`() = runBlocking<Unit> {
     httpClient
-      .post<Rectangle>("/print-layout") {
+      .post<PrintLayout>("/print-layout") {
         contentType(ContentType.Application.Json)
         body = PrintLayoutQuestion(
           Rectangle(1234, 4321),
@@ -34,7 +35,9 @@ internal class PrintLayoutBSpec {
       }
       .apply {
         assertEquals(
-          Rectangle(1234, 4321),
+          PrintLayout(
+            Rectangle(1234, 4321),
+          ),
           this,
         )
       }
