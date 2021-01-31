@@ -24,31 +24,24 @@ internal class PrintLayoutBSpec {
   internal data class PrintLayout(val size: Rectangle, val margin: Rectangle)
   internal data class Rectangle(val width: Int, val height: Int)
 
-  private suspend fun assertPrintLayout(
-    printLayoutQuestion: PrintLayoutQuestion,
-    printLayout: PrintLayout,
-  ) {
+  @Test
+  fun `calculate margins`(): Unit = runBlocking {
     httpClient
       .post<PrintLayout>("/print-layout") {
         contentType(ContentType.Application.Json)
-        body = printLayoutQuestion
+        body = PrintLayoutQuestion(
+          printOption = Rectangle(100, 100),
+          source = Rectangle(160, 200),
+        )
       }
       .apply {
-        assertEquals(printLayout, this)
+        assertEquals(
+          PrintLayout(
+            size = Rectangle(100, 100),
+            margin = Rectangle(10, 0),
+          ),
+          this,
+        )
       }
-  }
-
-  @Test
-  fun `calculate margins`() = runBlocking {
-    assertPrintLayout(
-      PrintLayoutQuestion(
-        printOption = Rectangle(100, 100),
-        source = Rectangle(160, 200),
-      ),
-      PrintLayout(
-        size = Rectangle(100, 100),
-        margin = Rectangle(10, 0),
-      ),
-    )
   }
 }
