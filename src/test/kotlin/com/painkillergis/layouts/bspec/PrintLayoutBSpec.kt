@@ -39,11 +39,11 @@ internal class PrintLayoutBSpec {
   }
 
   @Test
-  fun `calculate margin width when source is tall as print option`() = runBlocking {
+  fun `calculate margins when source aspect ratio is wider than print option`() = runBlocking {
     assertPrintLayout(
       PrintLayoutQuestion(
         printOption = Rectangle(100, 100),
-        source = Rectangle(80, 100),
+        source = Rectangle(160, 200),
       ),
       PrintLayout(
         size = Rectangle(100, 100),
@@ -53,11 +53,11 @@ internal class PrintLayoutBSpec {
   }
 
   @Test
-  fun `calculate margin height when source is wide as print option`() = runBlocking {
+  fun `calculate margins when source aspect ratio is taller than print option`() = runBlocking {
     assertPrintLayout(
       PrintLayoutQuestion(
         printOption = Rectangle(100, 100),
-        source = Rectangle(100, 80),
+        source = Rectangle(200, 160),
       ),
       PrintLayout(
         size = Rectangle(100, 100),
