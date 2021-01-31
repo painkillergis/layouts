@@ -21,8 +21,8 @@ internal class VersionBSpec {
   lateinit var httpClient: HttpClient
 
   @Test
-  fun `get _version`() {
-    val version = runBlocking { httpClient.get<Version>("/version") }
+  fun `get _version`() = runBlocking {
+    val version = httpClient.get<Version>("/version")
 
     assertThat(version.sha, matchesPattern("[0-9a-f]{40}"))
     assertThat(version.version, matchesPattern("v\\d+\\.\\d+\\.\\d+"))
