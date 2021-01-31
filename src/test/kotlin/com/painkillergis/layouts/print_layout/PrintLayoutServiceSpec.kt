@@ -12,6 +12,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       ),
     ) shouldBe PrintLayout(
       size = Rectangle(100, 200),
+      innerSize = Rectangle(100, 50),
       margin = Rectangle(0, 75),
     )
 
@@ -22,6 +23,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       ),
     ) shouldBe PrintLayout(
       size = Rectangle(100, 200),
+      innerSize = Rectangle(100, 150),
       margin = Rectangle(0, 25),
     )
   }
@@ -34,6 +36,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       ),
     ) shouldBe PrintLayout(
       size = Rectangle(100, 100),
+      innerSize = Rectangle(100, 100),
       margin = Rectangle(0, 0),
     )
   }
@@ -46,6 +49,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       ),
     ) shouldBe PrintLayout(
       size = Rectangle(200, 100),
+      innerSize = Rectangle(50, 100),
       margin = Rectangle(75, 0),
     )
 
@@ -56,6 +60,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       ),
     ) shouldBe PrintLayout(
       size = Rectangle(200, 100),
+      innerSize = Rectangle(150, 100),
       margin = Rectangle(25, 0),
     )
   }

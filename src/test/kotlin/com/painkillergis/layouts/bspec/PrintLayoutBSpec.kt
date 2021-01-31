@@ -21,7 +21,7 @@ internal class PrintLayoutBSpec {
   lateinit var httpClient: HttpClient
 
   internal data class PrintLayoutQuestion(val printOption: Rectangle, val source: Rectangle)
-  internal data class PrintLayout(val size: Rectangle, val margin: Rectangle)
+  internal data class PrintLayout(val size: Rectangle, val innerSize: Rectangle, val margin: Rectangle)
   internal data class Rectangle(val width: Int, val height: Int)
 
   @Test
@@ -38,6 +38,7 @@ internal class PrintLayoutBSpec {
         assertEquals(
           PrintLayout(
             size = Rectangle(100, 100),
+            innerSize = Rectangle(80, 100),
             margin = Rectangle(10, 0),
           ),
           this,

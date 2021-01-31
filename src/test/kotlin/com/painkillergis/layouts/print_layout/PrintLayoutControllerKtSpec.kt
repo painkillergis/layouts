@@ -32,7 +32,7 @@ internal class PrintLayoutControllerKtSpec {
   @Test
   fun `answers print layout question`() = withController {
     val question = PrintLayoutQuestion(Rectangle(1, 2), Rectangle(3, 4))
-    val answer = PrintLayout(Rectangle(2, 1), Rectangle(4, 3))
+    val answer = PrintLayout(Rectangle(2, 1), Rectangle(5, 6), Rectangle(4, 3))
 
     every { printLayoutService.answer(question) } returns answer
 
