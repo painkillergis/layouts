@@ -3,7 +3,9 @@ package com.painkillergis.layouts.print_layout
 import com.painkillergis.layouts.globalModules
 import io.ktor.http.*
 import io.ktor.server.testing.*
+import io.mockk.every
 import io.mockk.junit5.MockKExtension
+import io.mockk.mockk
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -14,35 +16,33 @@ import kotlin.test.assertEquals
 @ExtendWith(MockKExtension::class)
 internal class PrintLayoutControllerKtSpec {
 
+  private val printLayoutService = mockk<PrintLayoutService>()
+
   private fun withController(test: TestApplicationEngine.() -> Unit) =
     withTestApplication(
       {
-        printLayoutController()
+        printLayoutController(
+          printLayoutService,
+        )
         globalModules()
       },
       test,
     )
 
   @Test
-  fun `echo print option as print layout`() = withController {
+  fun `answers print layout question`() = withController {
+    val question = PrintLayoutQuestion(Rectangle(1, 2))
+    val answer = PrintLayout(Rectangle(2, 1))
+
+    every { printLayoutService.answer(question) } returns answer
+
     handleRequest(method = HttpMethod.Post, uri = "/print-layout") {
       addHeader("content-type", "application/json")
-      setBody(
-        Json.encodeToString(
-          PrintLayoutQuestion(
-            Rectangle(2332, 3223),
-          )
-        )
-      )
+      setBody(Json.encodeToString(question))
     }
       .apply {
         assertEquals(HttpStatusCode.OK, response.status())
-        assertEquals(
-          PrintLayout(
-            Rectangle(2332, 3223),
-          ),
-          Json.decodeFromString(response.content!!),
-        )
+        assertEquals(answer, Json.decodeFromString(response.content!!))
       }
   }
 }

@@ -5,12 +5,12 @@ import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-fun Application.printLayoutController() {
+fun Application.printLayoutController(printLayoutService: PrintLayoutService) {
   routing {
     post("/print-layout") {
       call.respond(
-        PrintLayout(
-          call.receive<PrintLayoutQuestion>().printOption,
+        printLayoutService.answer(
+          call.receive(),
         )
       )
     }
