@@ -15,4 +15,16 @@ internal class PrintLayoutServiceSpec : StringSpec({
       margin = Rectangle(10, 0),
     )
   }
+
+  "calculate margins when there is a height gap" {
+    PrintLayoutService().answer(
+      PrintLayoutQuestion(
+        printOption = Rectangle(100, 100),
+        source = Rectangle(100, 80),
+      ),
+    ) shouldBe PrintLayout(
+      size = Rectangle(100, 100),
+      margin = Rectangle(0, 10),
+    )
+  }
 })

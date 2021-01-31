@@ -6,7 +6,7 @@ class PrintLayoutService {
       printLayoutQuestion.printOption,
       Rectangle(
         (printLayoutQuestion.printOption.width - printLayoutQuestion.source.width) / 2,
-        0
+        (printLayoutQuestion.printOption.height - printLayoutQuestion.source.height) / 2,
       ),
     )
 }
