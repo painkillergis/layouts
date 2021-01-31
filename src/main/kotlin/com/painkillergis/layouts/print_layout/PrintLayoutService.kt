@@ -4,14 +4,14 @@ class PrintLayoutService {
   fun answer(printLayoutQuestion: PrintLayoutQuestion): PrintLayout {
     val (printOption, source) = printLayoutQuestion
     val (innerWidth, innerHeight) =
-      if (source.width > source.height)
+      if (printOption.height.toDouble() / printOption.width > source.height.toDouble() / source.width)
         listOf(
           printOption.width,
-          printOption.height * source.height / source.width,
+          source.height * printOption.width / source.width,
         )
       else
         listOf(
-          printOption.width * source.width / source.height,
+          source.width * printOption.height / source.height,
           printOption.height,
         )
     return PrintLayout(
