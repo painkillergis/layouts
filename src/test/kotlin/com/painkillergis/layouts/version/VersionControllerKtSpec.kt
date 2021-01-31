@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import kotlin.test.assertEquals
 
 @ExtendWith(MockKExtension::class)
-internal class VersionControllerSpec {
+internal class VersionControllerKtSpec {
 
   @MockK
   lateinit var versionService: VersionService
