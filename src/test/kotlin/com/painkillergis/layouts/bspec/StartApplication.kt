@@ -1,6 +1,6 @@
-package com.painkillergis.ktor_starter.bspec
+package com.painkillergis.layouts.bspec
 
-import com.painkillergis.ktor_starter.applicationModule
+import com.painkillergis.layouts.applicationModule
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import org.junit.jupiter.api.extension.BeforeAllCallback
@@ -10,7 +10,7 @@ internal object StartApplication : BeforeAllCallback, ExtensionContext.Store.Clo
   var server: NettyApplicationEngine? = null
 
   override fun beforeAll(context: ExtensionContext?) {
-    if (System.getenv("ktor_starter_baseUrl") != null || server != null) return
+    if (System.getenv("layouts_baseUrl") != null || server != null) return
     server = embeddedServer(
       Netty,
       applicationEngineEnvironment {

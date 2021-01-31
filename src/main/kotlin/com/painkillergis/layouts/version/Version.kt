@@ -1,4 +1,4 @@
-package com.painkillergis.ktor_starter.version
+package com.painkillergis.layouts.version
 
 import kotlinx.serialization.Serializable
 

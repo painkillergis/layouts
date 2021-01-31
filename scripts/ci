@@ -1,3 +1,3 @@
 #!/bin/sh
-ktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter-dark ./gradlew \
+layouts_baseUrl=http://painkiller.arctair.com/layouts-dark ./gradlew \
   clean shadowJar docker dockerPush darkDeploy cleanTest test switchDeployments

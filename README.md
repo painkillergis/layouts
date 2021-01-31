@@ -1,12 +1,12 @@
-# ktor-starter
+# layouts
 This starter gifts you a runnable barebones Kotlin Ktor application with tests.
 ## Eject
 `./eject`
-Ejecting renames packages, artifacts, services, deployments, and the project name from ktor-starter to the name of this directory.
+Ejecting renames packages, artifacts, services, deployments, and the project name from layouts to the name of this directory.
 ## Run the tests
 `./gradlew cleanTest test`
 ### Against a deployment
-`ktor_starter_baseUrl=http://painkiller.arctair.com/ktor-starter ./gradlew cleanTest test`
+`layouts_baseUrl=http://painkiller.arctair.com/layouts ./gradlew cleanTest test`
 ## Build, deploy, verify
 `scripts/ci`
 The ci script executes these steps:

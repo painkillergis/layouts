@@ -1,4 +1,4 @@
-package com.painkillergis.ktor_starter.version
+package com.painkillergis.layouts.version
 
 import org.hamcrest.Matchers
 import org.hamcrest.junit.MatcherAssert
