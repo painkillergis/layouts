@@ -1,8 +1,5 @@
 # layouts
-This starter gifts you a runnable barebones Kotlin Ktor application with tests.
-## Eject
-`./eject`
-Ejecting renames packages, artifacts, services, deployments, and the project name from layouts to the name of this directory.
+The layouts ReST service calculate print layouts for use in heightmap and shaded relief generation.
 ## Run the tests
 `./gradlew cleanTest test`
 ### Against a deployment
