@@ -86,7 +86,7 @@ configurations.all {
           when {
             version.matches(
               Regex(
-                ".*-rc$",
+                ".*[-.]rc\\d*$",
                 RegexOption.IGNORE_CASE
               )
             ) -> selection.reject("Release candidates are excluded")
