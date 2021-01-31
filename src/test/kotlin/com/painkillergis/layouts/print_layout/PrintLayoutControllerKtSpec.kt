@@ -29,9 +29,8 @@ internal class PrintLayoutControllerKtSpec {
       addHeader("content-type", "application/json")
       setBody(
         Json.encodeToString(
-          mapOf(
-            "width" to 2332,
-            "height" to 3223,
+          PrintLayoutQuestion(
+            Rectangle(2332, 3223),
           )
         )
       )
@@ -39,10 +38,7 @@ internal class PrintLayoutControllerKtSpec {
       .apply {
         assertEquals(HttpStatusCode.OK, response.status())
         assertEquals(
-          mapOf(
-            "width" to 2332,
-            "height" to 3223,
-          ),
+          Rectangle(2332, 3223),
           Json.decodeFromString(response.content!!),
         )
       }

@@ -8,7 +8,7 @@ import io.ktor.routing.*
 fun Application.printLayoutController() {
   routing {
     post("/print-layout") {
-      call.respond(call.receive<Map<String, Int>>())
+      call.respond(call.receive<PrintLayoutQuestion>().printOption)
     }
   }
 }
