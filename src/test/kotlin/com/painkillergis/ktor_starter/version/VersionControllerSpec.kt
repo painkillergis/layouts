@@ -1,6 +1,6 @@
-package com.painkiller.ktor_starter.version
+package com.painkillergis.ktor_starter.version
 
-import com.painkiller.ktor_starter.globalModules
+import com.painkillergis.ktor_starter.globalModules
 import io.ktor.http.*
 import io.ktor.server.testing.*
 import io.mockk.every

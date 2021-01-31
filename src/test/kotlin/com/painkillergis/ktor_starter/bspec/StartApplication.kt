@@ -1,6 +1,6 @@
-package com.painkiller.ktor_starter.bspec
+package com.painkillergis.ktor_starter.bspec
 
-import com.painkiller.ktor_starter.applicationModule
+import com.painkillergis.ktor_starter.applicationModule
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import org.junit.jupiter.api.extension.BeforeAllCallback

@@ -9,7 +9,7 @@ plugins {
   id("com.painkillergis.stepper_client.stepperClient") version "1.0.9"
 }
 
-group = "com.painkiller"
+group = "com.painkillergis"
 
 version =
   ProcessBuilder("sh", "-c", "git rev-list --count HEAD")

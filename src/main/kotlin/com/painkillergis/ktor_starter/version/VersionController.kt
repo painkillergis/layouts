@@ -1,4 +1,4 @@
-package com.painkiller.ktor_starter.version
+package com.painkillergis.ktor_starter.version
 
 import io.ktor.application.*
 import io.ktor.response.*
