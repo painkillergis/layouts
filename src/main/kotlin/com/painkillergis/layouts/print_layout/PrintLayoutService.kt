@@ -4,6 +4,9 @@ class PrintLayoutService {
   fun answer(printLayoutQuestion: PrintLayoutQuestion) =
     PrintLayout(
       printLayoutQuestion.printOption,
-      Rectangle(0, 0),
+      Rectangle(
+        (printLayoutQuestion.printOption.width - printLayoutQuestion.source.width) / 2,
+        0
+      ),
     )
 }

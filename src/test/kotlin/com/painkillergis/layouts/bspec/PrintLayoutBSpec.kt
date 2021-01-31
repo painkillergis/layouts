@@ -39,15 +39,15 @@ internal class PrintLayoutBSpec {
   }
 
   @Test
-  fun `echo print option as print layout`() = runBlocking {
+  fun `calculate margin width when source is tall as print option`() = runBlocking {
     assertPrintLayout(
       PrintLayoutQuestion(
-        Rectangle(1234, 4321),
-        Rectangle(0, 0),
+        printOption = Rectangle(100, 100),
+        source = Rectangle(80, 100),
       ),
       PrintLayout(
-        Rectangle(1234, 4321),
-        Rectangle(0, 0),
+        size = Rectangle(100, 100),
+        margin = Rectangle(10, 0),
       ),
     )
   }

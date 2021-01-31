@@ -4,15 +4,15 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
 internal class PrintLayoutServiceSpec : StringSpec({
-  "echo question" {
+  "calculate margins when there is a width gap" {
     PrintLayoutService().answer(
       PrintLayoutQuestion(
-        Rectangle(1234, 4321),
-        Rectangle(0, 0),
-      )
+        printOption = Rectangle(100, 100),
+        source = Rectangle(80, 100),
+      ),
     ) shouldBe PrintLayout(
-      Rectangle(1234, 4321),
-      Rectangle(0, 0),
+      size = Rectangle(100, 100),
+      margin = Rectangle(10, 0),
     )
   }
 })
