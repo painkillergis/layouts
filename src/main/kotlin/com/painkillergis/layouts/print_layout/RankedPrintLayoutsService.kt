@@ -7,7 +7,8 @@ class RankedPrintLayoutsService(val printLayoutService: PrintLayoutService) {
         printLayoutService.answer(
           PrintLayoutQuestion(
             it,
-            rankedPrintLayoutsQuestion.source
+            rankedPrintLayoutsQuestion.source,
+            rankedPrintLayoutsQuestion.margin,
           )
         )
       }

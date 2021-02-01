@@ -2,8 +2,12 @@ package com.painkillergis.layouts.print_layout
 
 class PrintLayoutService {
   fun answer(printLayoutQuestion: PrintLayoutQuestion): PrintLayout {
-    val (printOption, source) = printLayoutQuestion
-    val innerSize = getInnerSize(printOption, source)
+    val (printOption, source, margin) = printLayoutQuestion
+    val printOptionBody = Rectangle(printOption.width - margin * 2, printOption.height - margin * 2)
+    val innerSize = if (printOptionBody.height.toDouble() / printOptionBody.width > source.height.toDouble() / source.width)
+      Rectangle(printOptionBody.width, source.height * printOptionBody.width / source.width)
+    else
+      Rectangle(source.width * printOptionBody.height / source.height, printOptionBody.height)
     return PrintLayout(
       printOption,
       innerSize,
@@ -14,10 +18,4 @@ class PrintLayoutService {
     )
   }
 
-  private val getInnerSize = { (width, height): Rectangle, (sourceWidth, sourceHeight): Rectangle ->
-    if (height.toDouble() / width > sourceHeight.toDouble() / sourceWidth)
-      Rectangle(width, sourceHeight * width / sourceWidth)
-    else
-      Rectangle(sourceWidth * height / sourceHeight, height)
-  }
 }

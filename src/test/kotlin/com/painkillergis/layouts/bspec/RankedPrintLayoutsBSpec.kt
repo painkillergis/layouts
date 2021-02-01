@@ -31,6 +31,7 @@ internal class RankedPrintLayoutsBSpec {
             Rectangle(160, 200),
           ),
           source = Rectangle(160, 200),
+          margin = 0,
         )
       }
       .apply {

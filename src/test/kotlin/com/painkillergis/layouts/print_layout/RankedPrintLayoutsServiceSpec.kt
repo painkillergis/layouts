@@ -33,6 +33,7 @@ internal class RankedPrintLayoutsServiceSpec : StringSpec() {
             lastPrintOption,
           ),
           source = source,
+          margin = 123,
         )
         val firstPrintLayout = mockk<PrintLayout> {
           every { margin } returns firstMargin
@@ -41,8 +42,8 @@ internal class RankedPrintLayoutsServiceSpec : StringSpec() {
           every { margin } returns lastMargin
         }
 
-        every { printLayoutService.answer(PrintLayoutQuestion(firstPrintOption, source)) } returns lastPrintLayout
-        every { printLayoutService.answer(PrintLayoutQuestion(lastPrintOption, source)) } returns firstPrintLayout
+        every { printLayoutService.answer(PrintLayoutQuestion(firstPrintOption, source, 123)) } returns lastPrintLayout
+        every { printLayoutService.answer(PrintLayoutQuestion(lastPrintOption, source, 123)) } returns firstPrintLayout
 
         rankedPrintLayoutsService.answer(question) shouldBe listOf(
           firstPrintLayout,

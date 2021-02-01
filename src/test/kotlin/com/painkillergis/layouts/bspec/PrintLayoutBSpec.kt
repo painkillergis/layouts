@@ -26,16 +26,17 @@ internal class PrintLayoutBSpec {
       .post<PrintLayout>("/print-layout") {
         contentType(ContentType.Application.Json)
         body = PrintLayoutQuestion(
-          printOption = Rectangle(100, 100),
+          printOption = Rectangle(120, 120),
           source = Rectangle(160, 200),
+          margin = 10,
         )
       }
       .apply {
         assertEquals(
           PrintLayout(
-            size = Rectangle(100, 100),
+            size = Rectangle(120, 120),
             innerSize = Rectangle(80, 100),
-            margin = Rectangle(10, 0),
+            margin = Rectangle(20, 10),
           ),
           this,
         )
