@@ -16,13 +16,13 @@ import kotlin.test.assertEquals
 @ExtendWith(MockKExtension::class)
 internal class RankedPrintLayoutsControllerKtSpec {
 
-  private val printLayoutService = mockk<PrintLayoutService>()
+  private val rankedPrintLayoutsService = mockk<RankedPrintLayoutsService>()
 
   private fun withController(test: TestApplicationEngine.() -> Unit) =
     withTestApplication(
       {
         rankedPrintLayoutsController(
-          printLayoutService,
+          rankedPrintLayoutsService,
         )
         globalModules()
       },
@@ -31,10 +31,10 @@ internal class RankedPrintLayoutsControllerKtSpec {
 
   @Test
   fun `answers print layout question`() = withController {
-    val question = PrintLayoutQuestion(Rectangle(1, 2), Rectangle(3, 4))
-    val answer = PrintLayout(Rectangle(2, 1), Rectangle(5, 6), Rectangle(4, 3))
+    val question = RankedPrintLayoutsQuestion(listOf(Rectangle(1, 2)), Rectangle(3, 4))
+    val answer = listOf(PrintLayout(Rectangle(2, 1), Rectangle(5, 6), Rectangle(4, 3)))
 
-    every { printLayoutService.answer(question) } returns answer
+    every { rankedPrintLayoutsService.answer(question) } returns answer
 
     handleRequest(method = HttpMethod.Post, uri = "/ranked-print-layouts") {
       addHeader("content-type", "application/json")

@@ -5,11 +5,11 @@ import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
-fun Application.rankedPrintLayoutsController(printLayoutService: PrintLayoutService) {
+fun Application.rankedPrintLayoutsController(rankedPrintLayoutsService: RankedPrintLayoutsService) {
   routing {
     post("/ranked-print-layouts") {
       call.respond(
-        printLayoutService.answer(
+        rankedPrintLayoutsService.answer(
           call.receive(),
         )
       )

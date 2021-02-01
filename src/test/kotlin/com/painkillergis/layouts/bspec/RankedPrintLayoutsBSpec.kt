@@ -21,21 +21,25 @@ internal class RankedPrintLayoutsBSpec {
   lateinit var httpClient: HttpClient
 
   @Test
-  fun `copy print layout`(): Unit = runBlocking {
+  fun `single print layout`(): Unit = runBlocking {
     httpClient
-      .post<PrintLayout>("/ranked-print-layouts") {
+      .post<List<PrintLayout>>("/ranked-print-layouts") {
         contentType(ContentType.Application.Json)
-        body = PrintLayoutQuestion(
-          printOption = Rectangle(100, 100),
+        body = RankedPrintLayoutsQuestion(
+          printOptions = listOf(
+            Rectangle(100, 100),
+          ),
           source = Rectangle(160, 200),
         )
       }
       .apply {
         assertEquals(
-          PrintLayout(
-            size = Rectangle(100, 100),
-            innerSize = Rectangle(80, 100),
-            margin = Rectangle(10, 0),
+          listOf(
+            PrintLayout(
+              size = Rectangle(100, 100),
+              innerSize = Rectangle(80, 100),
+              margin = Rectangle(10, 0),
+            ),
           ),
           this,
         )

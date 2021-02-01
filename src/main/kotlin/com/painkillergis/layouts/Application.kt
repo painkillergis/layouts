@@ -1,6 +1,7 @@
 package com.painkillergis.layouts
 
 import com.painkillergis.layouts.print_layout.PrintLayoutService
+import com.painkillergis.layouts.print_layout.RankedPrintLayoutsService
 import com.painkillergis.layouts.print_layout.printLayoutController
 import com.painkillergis.layouts.print_layout.rankedPrintLayoutsController
 import com.painkillergis.layouts.version.VersionService
@@ -13,12 +14,11 @@ import io.ktor.server.netty.EngineMain.main
 fun main(args: Array<String>) = main(args)
 
 fun Application.applicationModule() {
-  val printLayoutService = PrintLayoutService()
   printLayoutController(
-    printLayoutService,
+    PrintLayoutService(),
   )
   rankedPrintLayoutsController(
-    printLayoutService,
+    RankedPrintLayoutsService(PrintLayoutService()),
   )
   versionController(
     VersionService(),
