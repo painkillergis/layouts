@@ -5,9 +5,9 @@ class PrintLayoutService {
     val (printOption, source, margin) = printLayoutQuestion
     val printOptionBody = Rectangle(printOption.width - margin * 2, printOption.height - margin * 2)
     val innerSize = if (printOptionBody.height.toDouble() / printOptionBody.width > source.height.toDouble() / source.width)
-      Rectangle(printOptionBody.width, source.height * printOptionBody.width / source.width)
+      Rectangle(printOptionBody.width, (source.height * printOptionBody.width / source.width).toInt())
     else
-      Rectangle(source.width * printOptionBody.height / source.height, printOptionBody.height)
+      Rectangle((source.width * printOptionBody.height / source.height).toInt(), printOptionBody.height)
     return PrintLayout(
       printOption,
       innerSize,

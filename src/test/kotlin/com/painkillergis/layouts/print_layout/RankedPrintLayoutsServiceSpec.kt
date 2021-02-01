@@ -26,7 +26,7 @@ internal class RankedPrintLayoutsServiceSpec : StringSpec() {
       ).forAll { firstMargin, lastMargin ->
         val firstPrintOption = mockk<Rectangle>()
         val lastPrintOption = mockk<Rectangle>()
-        val source = mockk<Rectangle>()
+        val source = mockk<RectangleDouble>()
         val question = RankedPrintLayoutsQuestion(
           printOptions = listOf(
             firstPrintOption,

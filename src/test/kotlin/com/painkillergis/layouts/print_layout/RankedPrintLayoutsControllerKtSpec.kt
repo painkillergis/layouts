@@ -31,7 +31,7 @@ internal class RankedPrintLayoutsControllerKtSpec {
 
   @Test
   fun `answers print layout question`() = withController {
-    val question = RankedPrintLayoutsQuestion(listOf(Rectangle(1, 2)), Rectangle(3, 4), 9)
+    val question = RankedPrintLayoutsQuestion(listOf(Rectangle(1, 2)), RectangleDouble(3.0, 4.0), 9)
     val answer = listOf(PrintLayout(Rectangle(2, 1), Rectangle(5, 6), Rectangle(4, 3)))
 
     every { rankedPrintLayoutsService.answer(question) } returns answer

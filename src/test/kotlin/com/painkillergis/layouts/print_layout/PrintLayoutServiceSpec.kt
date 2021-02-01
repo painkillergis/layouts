@@ -14,7 +14,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(100, 200),
-          source = Rectangle(200, 100),
+          source = RectangleDouble(200.0, 100.0),
           0,
         ),
         PrintLayout(
@@ -26,7 +26,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(100, 200),
-          source = Rectangle(100, 150),
+          source = RectangleDouble(100.0, 150.0),
           0,
         ),
         PrintLayout(
@@ -38,7 +38,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(30, 40),
-          source = Rectangle(20, 40),
+          source = RectangleDouble(20.0, 40.0),
           10,
         ),
         PrintLayout(
@@ -58,7 +58,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(100, 100),
-          source = Rectangle(200, 200),
+          source = RectangleDouble(200.0, 200.0),
           0,
         ),
         PrintLayout(
@@ -70,7 +70,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(120, 120),
-          source = Rectangle(200, 200),
+          source = RectangleDouble(200.0, 200.0),
           10,
         ),
         PrintLayout(
@@ -90,7 +90,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(200, 100),
-          source = Rectangle(100, 200),
+          source = RectangleDouble(100.0, 200.0),
           margin = 0,
         ),
         PrintLayout(
@@ -102,7 +102,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(200, 100),
-          source = Rectangle(150, 100),
+          source = RectangleDouble(150.0, 100.0),
           margin = 0,
         ),
         PrintLayout(
@@ -114,7 +114,7 @@ internal class PrintLayoutServiceSpec : StringSpec({
       row(
         PrintLayoutQuestion(
           printOption = Rectangle(40, 30),
-          source = Rectangle(40, 20),
+          source = RectangleDouble(40.0, 20.0),
           10,
         ),
         PrintLayout(
