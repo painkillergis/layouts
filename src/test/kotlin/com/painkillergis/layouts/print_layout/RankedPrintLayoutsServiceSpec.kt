@@ -1,5 +1,7 @@
 package com.painkillergis.layouts.print_layout
 
+import com.painkillergis.layouts.Rectangle
+import com.painkillergis.layouts.RectangleDouble
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.data.forAll
 import io.kotest.data.headers

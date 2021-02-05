@@ -4,6 +4,8 @@ import com.painkillergis.layouts.print_layout.PrintLayoutService
 import com.painkillergis.layouts.print_layout.RankedPrintLayoutsService
 import com.painkillergis.layouts.print_layout.printLayoutController
 import com.painkillergis.layouts.print_layout.rankedPrintLayoutsController
+import com.painkillergis.layouts.tiles.TileService
+import com.painkillergis.layouts.tiles.tilesController
 import com.painkillergis.layouts.version.VersionService
 import com.painkillergis.layouts.version.versionController
 import io.ktor.application.*
@@ -19,6 +21,9 @@ fun Application.applicationModule() {
   )
   rankedPrintLayoutsController(
     RankedPrintLayoutsService(PrintLayoutService()),
+  )
+  tilesController(
+    TileService(),
   )
   versionController(
     VersionService(),

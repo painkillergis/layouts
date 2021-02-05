@@ -1,5 +1,7 @@
 package com.painkillergis.layouts.print_layout
 
+import com.painkillergis.layouts.Rectangle
+
 class PrintLayoutService {
   fun answer(printLayoutQuestion: PrintLayoutQuestion): PrintLayout {
     val (printOption, source, margin) = printLayoutQuestion

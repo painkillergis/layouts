@@ -1,5 +1,7 @@
 package com.painkillergis.layouts.print_layout
 
+import com.painkillergis.layouts.Rectangle
+import com.painkillergis.layouts.RectangleDouble
 import com.painkillergis.layouts.globalModules
 import io.ktor.http.*
 import io.ktor.server.testing.*

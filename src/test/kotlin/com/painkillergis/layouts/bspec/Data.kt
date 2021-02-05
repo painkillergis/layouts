@@ -5,7 +5,12 @@ internal data class RankedPrintLayoutsQuestion(
   val source: Rectangle,
   val margin: Int
 )
+
 internal data class PrintLayoutQuestion(val printOption: Rectangle, val source: RectangleDouble, val margin: Int)
 internal data class PrintLayout(val size: Rectangle, val innerSize: Rectangle, val margin: Rectangle)
+
+internal data class TileQuestion(val size: Rectangle, val tileSize: Rectangle)
+internal data class Tile(val size: Rectangle, val position: Rectangle)
+
 internal data class Rectangle(val width: Int, val height: Int)
 internal data class RectangleDouble(val width: Double, val height: Double)
