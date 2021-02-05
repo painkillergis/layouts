@@ -18,4 +18,30 @@ internal class TileServiceSpec : StringSpec({
       ),
     )
   }
+
+  "tile request breaks cleanly into tiles" {
+    TileService().answer(
+      TileQuestion(
+        size = Rectangle(10, 10),
+        tileSize = Rectangle(5, 5),
+      ),
+    ) shouldBe listOf(
+      Tile(
+        size = Rectangle(5, 5),
+        position = Rectangle(0, 0),
+      ),
+      Tile(
+        size = Rectangle(5, 5),
+        position = Rectangle(5, 0),
+      ),
+      Tile(
+        size = Rectangle(5, 5),
+        position = Rectangle(0, 5),
+      ),
+      Tile(
+        size = Rectangle(5, 5),
+        position = Rectangle(5, 5),
+      ),
+    )
+  }
 })
