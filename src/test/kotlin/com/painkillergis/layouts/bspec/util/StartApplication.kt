@@ -1,4 +1,4 @@
-package com.painkillergis.layouts.bspec
+package com.painkillergis.layouts.bspec.util
 
 import com.painkillergis.layouts.applicationModule
 import io.ktor.server.engine.*

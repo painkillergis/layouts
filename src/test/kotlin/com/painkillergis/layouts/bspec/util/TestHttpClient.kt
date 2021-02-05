@@ -1,4 +1,4 @@
-package com.painkillergis.layouts.bspec
+package com.painkillergis.layouts.bspec.util
 
 import io.ktor.client.*
 import io.ktor.client.features.*
