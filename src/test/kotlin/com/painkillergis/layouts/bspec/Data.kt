@@ -14,3 +14,5 @@ internal data class Tile(val size: Rectangle, val position: Rectangle)
 
 internal data class Rectangle(val width: Int, val height: Int)
 internal data class RectangleDouble(val width: Double, val height: Double)
+
+internal data class Version(val sha: String, val version: String)
