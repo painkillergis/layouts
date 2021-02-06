@@ -26,6 +26,9 @@ internal class TilesControllerKtSpec {
 
   private val tileService = mockk<TileService>()
 
+  private val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
+  private val answer = listOf(Tile(Rectangle(5, 6), Rectangle(7, 8)))
+
   private fun withController(test: TestApplicationEngine.() -> Unit) =
     withTestApplication(
       {
@@ -39,9 +42,6 @@ internal class TilesControllerKtSpec {
 
   @Test
   fun `answers tile question`() = withController {
-    val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
-    val answer = listOf(Tile(Rectangle(5, 6), Rectangle(7, 8)))
-
     every { tileService.answer(question) } returns answer
 
     handleRequest(method = HttpMethod.Post, uri = "/tiles") {
@@ -87,8 +87,6 @@ internal class TilesControllerKtSpec {
 
   @Test
   fun `service error`() = withController {
-    val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
-
     every { tileService.answer(allAny()) } throws Exception("failure")
 
     handleRequest(method = HttpMethod.Post, uri = "/tiles") {
