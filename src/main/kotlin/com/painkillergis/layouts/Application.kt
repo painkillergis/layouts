@@ -17,6 +17,7 @@ fun main(args: Array<String>) = main(args)
 
 fun Application.applicationModule() {
   printLayoutController(
+    log,
     PrintLayoutService(),
   )
   rankedPrintLayoutsController(
