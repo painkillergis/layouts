@@ -11,6 +11,7 @@ import io.ktor.server.testing.*
 import io.mockk.every
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -19,12 +20,14 @@ import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.slf4j.Logger
 import kotlin.test.assertEquals
 
 @ExtendWith(MockKExtension::class)
 internal class TilesControllerKtSpec {
 
   private val tileService = mockk<TileService>()
+  private val logger = mockk<Logger>(relaxed = true)
 
   private val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
   private val answer = listOf(Tile(Rectangle(5, 6), Rectangle(7, 8)))
@@ -33,6 +36,7 @@ internal class TilesControllerKtSpec {
     withTestApplication(
       {
         tilesController(
+          logger,
           tileService,
         )
         globalModules()
@@ -87,7 +91,8 @@ internal class TilesControllerKtSpec {
 
   @Test
   fun `service error`() = withController {
-    every { tileService.answer(allAny()) } throws Exception("failure")
+    val error = Exception("failure")
+    every { tileService.answer(allAny()) } throws error
 
     handleRequest(method = HttpMethod.Post, uri = "/tiles") {
       addHeader("content-type", "application/json")
@@ -96,5 +101,7 @@ internal class TilesControllerKtSpec {
       .apply {
         assertEquals(HttpStatusCode.InternalServerError, response.status())
       }
+
+    verify { logger.error("Failed to answer tile question", error) }
   }
 }

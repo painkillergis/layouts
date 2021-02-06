@@ -23,6 +23,7 @@ fun Application.applicationModule() {
     RankedPrintLayoutsService(PrintLayoutService()),
   )
   tilesController(
+    log,
     TileService(),
   )
   versionController(

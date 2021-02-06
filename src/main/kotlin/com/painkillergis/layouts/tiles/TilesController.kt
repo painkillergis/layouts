@@ -8,8 +8,9 @@ import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import org.slf4j.Logger
 
-fun Application.tilesController(tileService: TileService) {
+fun Application.tilesController(logger: Logger, tileService: TileService) {
   routing {
     post("/tiles") {
       try {
@@ -21,7 +22,7 @@ fun Application.tilesController(tileService: TileService) {
           is UnrecognizedPropertyException->
             call.respond(HttpStatusCode.BadRequest, "Malformed request body")
           else -> {
-            log.error("Failed to answer tile question", error)
+            logger.error("Failed to answer tile question", error)
             call.respond(HttpStatusCode.InternalServerError)
           }
         }
