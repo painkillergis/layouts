@@ -12,7 +12,6 @@ internal data class PrintLayout(val size: Rectangle, val innerSize: Rectangle, v
 internal data class TileQuestion(val size: Rectangle, val tileSize: Rectangle, val overlap: Int)
 internal data class Tile(
   val size: Rectangle,
-  val position: Rectangle,
   val bounds: Bounds,
   val innerBounds: Bounds,
   val indices: Coordinate

@@ -11,7 +11,6 @@ data class TileQuestion(val size: Rectangle, val tileSize: Rectangle, val overla
 @Serializable
 data class Tile(
   val size: Rectangle,
-  val position: Rectangle,
   val bounds: Bounds,
   val innerBounds: Bounds,
   val indices: Coordinate

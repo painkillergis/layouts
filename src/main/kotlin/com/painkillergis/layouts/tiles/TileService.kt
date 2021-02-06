@@ -23,7 +23,6 @@ class TileService {
         
         Tile(
           Rectangle(right - left, bottom - top),
-          Rectangle(left, top),
           Bounds(left, top, right, bottom),
           Bounds(
             innerLeft,
