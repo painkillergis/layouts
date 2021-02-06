@@ -11,14 +11,26 @@ class TileService {
     val (totalSize, tileSize, overlap) = question
     return getIndexTiles(question)
       .map { (x, y) ->
-        val left = max(x * tileSize.width - overlap, 0)
-        val top = max(y * tileSize.height - overlap, 0)
-        val right = min((x + 1) * tileSize.width + overlap, totalSize.width)
-        val bottom = min((y + 1) * tileSize.height + overlap, totalSize.height)
+        val innerLeft = x * tileSize.width
+        val innerTop = y * tileSize.height
+        val innerRight = (x + 1) * tileSize.width
+        val innerBottom = (y + 1) * tileSize.height
+
+        val left = max(innerLeft - overlap, 0)
+        val top = max(innerTop - overlap, 0)
+        val right = min(innerRight + overlap, totalSize.width)
+        val bottom = min(innerBottom + overlap, totalSize.height)
+        
         Tile(
           Rectangle(right - left, bottom - top),
           Rectangle(left, top),
           Bounds(left, top, right, bottom),
+          Bounds(
+            innerLeft,
+            innerTop,
+            min(innerRight, totalSize.width),
+            min(innerBottom, totalSize.height),
+          ),
           Coordinate(x, y),
         )
       }

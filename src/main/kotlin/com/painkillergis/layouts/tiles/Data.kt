@@ -9,4 +9,10 @@ import kotlinx.serialization.Serializable
 data class TileQuestion(val size: Rectangle, val tileSize: Rectangle, val overlap : Int)
 
 @Serializable
-data class Tile(val size: Rectangle, val position: Rectangle, val bounds: Bounds, val indices: Coordinate)
+data class Tile(
+  val size: Rectangle,
+  val position: Rectangle,
+  val bounds: Bounds,
+  val innerBounds: Bounds,
+  val indices: Coordinate
+)

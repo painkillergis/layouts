@@ -41,6 +41,7 @@ internal class TilesControllerKtSpec {
       Rectangle(5, 6),
       Rectangle(7, 8),
       Bounds(11, 12, 13, 14),
+      Bounds(15, 16, 17, 18),
       Coordinate(9, 10),
     ),
   )
