@@ -1,5 +1,6 @@
 package com.painkillergis.layouts.tiles
 
+import com.painkillergis.layouts.Coordinate
 import com.painkillergis.layouts.Rectangle
 import kotlinx.serialization.Serializable
 
@@ -7,4 +8,4 @@ import kotlinx.serialization.Serializable
 data class TileQuestion(val size: Rectangle, val tileSize: Rectangle, val overlap : Int)
 
 @Serializable
-data class Tile(val size: Rectangle, val position: Rectangle)
+data class Tile(val size: Rectangle, val position: Rectangle, val indices: Coordinate)

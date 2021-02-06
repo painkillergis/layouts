@@ -30,7 +30,7 @@ internal class TilesBSpec {
         contentType(ContentType.Application.Json)
         body = TileQuestion(
           size = Rectangle(10, 10),
-          tileSize = Rectangle(10, 10),
+          tileSize = Rectangle(5, 10),
           overlap = 0,
         )
       }
@@ -38,8 +38,14 @@ internal class TilesBSpec {
         assertEquals(
           listOf(
             Tile(
-              size = Rectangle(10, 10),
+              size = Rectangle(5, 10),
               position = Rectangle(0, 0),
+              indices = Coordinate(0, 0),
+            ),
+            Tile(
+              size = Rectangle(5, 10),
+              position = Rectangle(5, 0),
+              indices = Coordinate(1, 0),
             ),
           ),
           this,

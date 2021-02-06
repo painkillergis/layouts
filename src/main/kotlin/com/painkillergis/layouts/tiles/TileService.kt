@@ -1,5 +1,6 @@
 package com.painkillergis.layouts.tiles
 
+import com.painkillergis.layouts.Coordinate
 import com.painkillergis.layouts.Rectangle
 import java.lang.Integer.max
 import java.lang.Integer.min
@@ -9,17 +10,14 @@ class TileService {
     val (totalSize, tileSize, overlap) = question
     return getIndexTiles(question)
       .map { (x, y) ->
-        listOf(
-          max(x * tileSize.width - overlap, 0),
-          max(y * tileSize.height - overlap, 0),
-          min((x + 1) * tileSize.width + overlap, totalSize.width),
-          min((y + 1) * tileSize.height + overlap, totalSize.height),
-        )
-      }
-      .map { (left,  top, right, bottom) ->
+        val left = max(x * tileSize.width - overlap, 0)
+        val top = max(y * tileSize.height - overlap, 0)
+        val right = min((x + 1) * tileSize.width + overlap, totalSize.width)
+        val bottom = min((y + 1) * tileSize.height + overlap, totalSize.height)
         Tile(
           Rectangle(right - left, bottom - top),
           Rectangle(left, top),
+          Coordinate(x, y),
         )
       }
   }

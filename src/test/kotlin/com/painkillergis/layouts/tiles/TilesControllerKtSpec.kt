@@ -1,5 +1,6 @@
 package com.painkillergis.layouts.tiles
 
+import com.painkillergis.layouts.Coordinate
 import com.painkillergis.layouts.Rectangle
 import com.painkillergis.layouts.globalModules
 import io.kotest.data.forAll
@@ -29,8 +30,18 @@ internal class TilesControllerKtSpec {
   private val tileService = mockk<TileService>()
   private val logger = mockk<Logger>(relaxed = true)
 
-  private val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
-  private val answer = listOf(Tile(Rectangle(5, 6), Rectangle(7, 8)))
+  private val question = TileQuestion(
+    Rectangle(1, 2),
+    Rectangle(3, 4),
+    0,
+  )
+  private val answer = listOf(
+    Tile(
+      Rectangle(5, 6),
+      Rectangle(7, 8),
+      Coordinate(9, 10),
+    ),
+  )
 
   private fun withController(test: TestApplicationEngine.() -> Unit) =
     withTestApplication(
