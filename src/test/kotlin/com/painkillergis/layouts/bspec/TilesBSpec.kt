@@ -40,11 +40,13 @@ internal class TilesBSpec {
             Tile(
               size = Rectangle(5, 10),
               position = Rectangle(0, 0),
+              bounds = Bounds(0, 0, 5, 10),
               indices = Coordinate(0, 0),
             ),
             Tile(
               size = Rectangle(5, 10),
               position = Rectangle(5, 0),
+              bounds = Bounds(5, 0, 10, 10),
               indices = Coordinate(1, 0),
             ),
           ),

@@ -10,3 +10,6 @@ data class RectangleDouble(val width: Double, val height: Double)
 
 @Serializable
 data class Coordinate(val x: Int, val y: Int)
+
+@Serializable
+data class Bounds(val left : Int, val top : Int, val right : Int, val bottom : Int)

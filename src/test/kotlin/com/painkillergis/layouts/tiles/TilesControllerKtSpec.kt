@@ -1,5 +1,6 @@
 package com.painkillergis.layouts.tiles
 
+import com.painkillergis.layouts.Bounds
 import com.painkillergis.layouts.Coordinate
 import com.painkillergis.layouts.Rectangle
 import com.painkillergis.layouts.globalModules
@@ -39,6 +40,7 @@ internal class TilesControllerKtSpec {
     Tile(
       Rectangle(5, 6),
       Rectangle(7, 8),
+      Bounds(11, 12, 13, 14),
       Coordinate(9, 10),
     ),
   )

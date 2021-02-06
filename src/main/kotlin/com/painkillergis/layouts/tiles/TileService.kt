@@ -1,5 +1,6 @@
 package com.painkillergis.layouts.tiles
 
+import com.painkillergis.layouts.Bounds
 import com.painkillergis.layouts.Coordinate
 import com.painkillergis.layouts.Rectangle
 import java.lang.Integer.max
@@ -17,6 +18,7 @@ class TileService {
         Tile(
           Rectangle(right - left, bottom - top),
           Rectangle(left, top),
+          Bounds(left, top, right, bottom),
           Coordinate(x, y),
         )
       }
