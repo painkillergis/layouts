@@ -73,4 +73,51 @@ internal class TileServiceSpec : StringSpec({
       ),
     )
   }
+
+  "overlapping tiles" {
+    TileService().answer(
+      TileQuestion(
+        size = Rectangle(3, 3),
+        tileSize = Rectangle(1, 1),
+        overlap = 1,
+      ),
+    ) shouldBe listOf(
+      Tile(
+        size = Rectangle(2, 2),
+        position = Rectangle(0, 0),
+      ),
+      Tile(
+        size = Rectangle(3, 2),
+        position = Rectangle(0, 0),
+      ),
+      Tile(
+        size = Rectangle(2, 2),
+        position = Rectangle(1, 0),
+      ),
+      Tile(
+        size = Rectangle(2, 3),
+        position = Rectangle(0, 0),
+      ),
+      Tile(
+        size = Rectangle(3, 3),
+        position = Rectangle(0, 0),
+      ),
+      Tile(
+        size = Rectangle(2, 3),
+        position = Rectangle(1, 0),
+      ),
+      Tile(
+        size = Rectangle(2, 2),
+        position = Rectangle(0, 1),
+      ),
+      Tile(
+        size = Rectangle(3, 2),
+        position = Rectangle(0, 1),
+      ),
+      Tile(
+        size = Rectangle(2, 2),
+        position = Rectangle(1, 1),
+      ),
+    )
+  }
 })

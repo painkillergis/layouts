@@ -1,20 +1,25 @@
 package com.painkillergis.layouts.tiles
 
 import com.painkillergis.layouts.Rectangle
+import java.lang.Integer.max
 import java.lang.Integer.min
 
 class TileService {
   fun answer(question: TileQuestion): List<Tile> {
-    val (totalSize, tileSize) = question
+    val (totalSize, tileSize, overlap) = question
     return getIndexTiles(question)
-      .map { (x, y) -> Rectangle(x * tileSize.width, y * tileSize.height) }
-      .map { position ->
+      .map { (x, y) ->
+        listOf(
+          max(x * tileSize.width - overlap, 0),
+          max(y * tileSize.height - overlap, 0),
+          min((x + 1) * tileSize.width + overlap, totalSize.width),
+          min((y + 1) * tileSize.height + overlap, totalSize.height),
+        )
+      }
+      .map { (left,  top, right, bottom) ->
         Tile(
-          Rectangle(
-            min(tileSize.width, totalSize.width - position.width),
-            min(tileSize.height, totalSize.height - position.height),
-          ),
-          position,
+          Rectangle(right - left, bottom - top),
+          Rectangle(left, top),
         )
       }
   }
