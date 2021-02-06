@@ -10,6 +10,7 @@ internal class TileServiceSpec : StringSpec({
       TileQuestion(
         size = Rectangle(10, 10),
         tileSize = Rectangle(10, 10),
+        overlap = 0,
       ),
     ) shouldBe listOf(
       Tile(
@@ -24,6 +25,7 @@ internal class TileServiceSpec : StringSpec({
       TileQuestion(
         size = Rectangle(10, 10),
         tileSize = Rectangle(5, 5),
+        overlap = 0,
       ),
     ) shouldBe listOf(
       Tile(
@@ -50,6 +52,7 @@ internal class TileServiceSpec : StringSpec({
       TileQuestion(
         size = Rectangle(10, 10),
         tileSize = Rectangle(6, 6),
+        overlap = 0,
       ),
     ) shouldBe listOf(
       Tile(

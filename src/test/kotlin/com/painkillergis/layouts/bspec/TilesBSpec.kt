@@ -31,6 +31,7 @@ internal class TilesBSpec {
         body = TileQuestion(
           size = Rectangle(10, 10),
           tileSize = Rectangle(10, 10),
+          overlap = 0,
         )
       }
       .apply {

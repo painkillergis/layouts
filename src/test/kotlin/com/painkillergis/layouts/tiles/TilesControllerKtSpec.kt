@@ -39,7 +39,7 @@ internal class TilesControllerKtSpec {
 
   @Test
   fun `answers tile question`() = withController {
-    val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4))
+    val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
     val answer = listOf(Tile(Rectangle(5, 6), Rectangle(7, 8)))
 
     every { tileService.answer(question) } returns answer
@@ -87,7 +87,7 @@ internal class TilesControllerKtSpec {
 
   @Test
   fun `service error`() = withController {
-    val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4))
+    val question = TileQuestion(Rectangle(1, 2), Rectangle(3, 4), 0)
 
     every { tileService.answer(allAny()) } throws Exception("failure")
 
