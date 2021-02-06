@@ -2,6 +2,10 @@ package com.painkillergis.layouts.tiles
 
 import com.painkillergis.layouts.Rectangle
 import com.painkillergis.layouts.globalModules
+import io.kotest.data.forAll
+import io.kotest.data.headers
+import io.kotest.data.row
+import io.kotest.data.table
 import io.ktor.http.*
 import io.ktor.server.testing.*
 import io.mockk.every
@@ -10,6 +14,9 @@ import io.mockk.mockk
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
+import kotlinx.serialization.json.putJsonObject
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import kotlin.test.assertEquals
@@ -49,14 +56,33 @@ internal class TilesControllerKtSpec {
 
   @Test
   fun `malformed body`() = withController {
-    handleRequest(method = HttpMethod.Post, uri = "/tiles") {
-      addHeader("content-type", "application/json")
-      setBody("{\"hot garbage}")
-    }
-      .apply {
-        assertEquals(HttpStatusCode.BadRequest, response.status())
-        assertEquals("Malformed request body", response.content!!)
+    table(
+      headers("body"),
+      row("{\"hot garbage"),
+      row("{}"),
+      row(
+        buildJsonObject {
+          putJsonObject("size") {
+            put("width", 0)
+            put("height", 0)
+          }
+          putJsonObject("tileSize") {
+            put("width", 0)
+            put("height", 0)
+          }
+          put("extra", "property")
+        }.toString()
+      ),
+    ).forAll { body ->
+      handleRequest(method = HttpMethod.Post, uri = "/tiles") {
+        addHeader("content-type", "application/json")
+        setBody(body)
       }
+        .apply {
+          assertEquals(HttpStatusCode.BadRequest, response.status())
+          assertEquals("Malformed request body", response.content!!)
+        }
+    }
   }
 
   @Test
