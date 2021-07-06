@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   application
-  kotlin("jvm") version "1.4.21"
-  kotlin("plugin.serialization") version "1.4.21"
-  id("com.github.johnrengelman.shadow") version "4.0.4"
+  kotlin("jvm") version "1.5.0"
+  kotlin("plugin.serialization") version "1.5.0"
+  id("com.github.johnrengelman.shadow") version "5.2.0"
   id("com.palantir.docker") version "0.25.0"
   id("com.painkillergis.stepper_client.stepperClient") version "1.0.13"
 }
@@ -63,6 +63,10 @@ tasks.test {
   if (System.getenv("layouts_baseUrl") != null) {
     include("**/bspec/")
   }
+}
+
+tasks.shadowJar {
+  archiveClassifier.set("")
 }
 
 tasks.withType<KotlinCompile>() {
